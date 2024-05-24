@@ -11,10 +11,15 @@ return {
   },
   cmd = 'Neotree',
   keys = {
+    -- Reveal key mapping
+    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    -- Toggle key mapping
     {
-      '\\',
-      ':Neotree reveal<CR>',
-      { desc = 'NeoTree reveal' },
+      '<leader>n',
+      function()
+        require('neo-tree.command').execute { toggle = true, dir = vim.loop.cwd() }
+      end,
+      { desc = 'Toggle NeoTree' },
     },
   },
   opts = {
