@@ -641,7 +641,7 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -662,6 +662,39 @@ require('lazy').setup({
           end
           return 'make install_jsregexp'
         end)(),
+        config = function()
+          local ls = require 'luasnip'
+          local s = ls.snippet
+          local t = ls.text_node
+          local i = ls.insert_node
+
+          -- Define your custom snippets
+          ls.add_snippets('javascript', {
+            s('index', {
+              t {
+                'export default function Index() {',
+                '  return (',
+                '    <div>Index</div>',
+                '  );',
+                '}',
+              },
+            }),
+          })
+
+          ls.add_snippets('javascriptreact', {
+            s('index', {
+              t {
+                'export default function Index() {',
+                '  return (',
+                '    <div>Index</div>',
+                '  );',
+                '}',
+              },
+            }),
+          })
+          -- If using `friendly-snippets`, uncomment the following lines
+          -- require('luasnip.loaders.from_vscode').lazy_load()
+        end,
         dependencies = {
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
@@ -854,10 +887,10 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.nvim-ts-autotag',
   require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
