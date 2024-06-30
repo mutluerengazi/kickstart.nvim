@@ -131,7 +131,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = 3
 
 --wrap to nonwrap
 vim.opt.wrap = false
@@ -837,7 +837,6 @@ require('lazy').setup({
       statusline.section_location = function()
         return '%2l:%-2v'
       end
-
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
