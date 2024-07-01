@@ -670,7 +670,7 @@ require('lazy').setup({
 
           -- Define your custom snippets
           ls.add_snippets('javascript', {
-            s('index', {
+            s('rfc', {
               t {
                 'export default function Index() {',
                 '  return (',
@@ -682,7 +682,7 @@ require('lazy').setup({
           })
 
           ls.add_snippets('javascriptreact', {
-            s('index', {
+            s('rfc', {
               t {
                 'export default function Index() {',
                 '  return (',
@@ -829,6 +829,9 @@ require('lazy').setup({
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
+
+      --tabs for opened buffers
+      require('mini.tabline').setup()
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
