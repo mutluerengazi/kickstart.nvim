@@ -111,8 +111,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Buffer navigation
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer' })
-
--- [[ Basic Autocommands ]]
+vim.keymap.set('n', '<leader>b[', ':bfirst<CR>', { desc = 'First buffer' })
+vim.keymap.set('n', '<leader>b]', ':blast<CR>', { desc = 'Last buffer' })
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = 'Delete buffer' }) -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
@@ -212,6 +213,17 @@ require('lazy').setup({
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        ['<leader>b'] = {
+          name = '[B]uffer',
+          n = { ':bnext<CR>', 'Next buffer' },
+          p = { ':bprevious<CR>', 'Previous buffer' },
+          ['['] = { ':bfirst<CR>', 'First buffer' },
+          [']'] = { ':blast<CR>', 'Last buffer' },
+          d = { ':bdelete<CR>', 'Delete buffer' },
+          f = { ':bfirst<CR>', 'First buffer' },
+          l = { ':blast<CR>', 'Last buffer' },
+          _ = 'which_key_ignore',
+        },
       }
       -- visual mode
       require('which-key').register({
