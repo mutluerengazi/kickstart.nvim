@@ -19,6 +19,11 @@ return {
   },
   opts = {
     filesystem = {
+      filtered_items = {
+        visible = true, -- This line makes hidden files visible
+        hide_dotfiles = false, -- This line ensures dotfiles are not hidden
+        hide_gitignored = false, -- Optional: This line shows gitignored files
+      },
       window = {
         position = 'right',
         width = 40,
