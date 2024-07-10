@@ -769,41 +769,6 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  {
-    'echasnovski/mini.nvim',
-    config = function()
-      -- Existing configurations
-      require('mini.ai').setup { n_lines = 500 }
-      require('mini.surround').setup()
-      require('mini.git').setup()
-
-      -- Add mini.starter configuration
-      require('mini.starter').setup {
-        evaluate_single = true,
-        header = table.concat({
-          [[                                                ]],
-          [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗ ]],
-          [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║ ]],
-          [[ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║ ]],
-          [[ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ]],
-          [[ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║ ]],
-          [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ]],
-          [[                                                ]],
-        }, '\n'),
-        footer = table.concat({
-          '',
-          '[ TIP: To exit Vim, just power off your computer. ]',
-        }, '\n'),
-        items = {
-          { name = 'Find File', action = 'Telescope find_files', section = 'Telescope' },
-          { name = 'Find Word', action = 'Telescope live_grep', section = 'Telescope' },
-          { name = 'Recent Files', action = 'Telescope oldfiles', section = 'Telescope' },
-          { name = 'Config', action = 'lua require("lazyvim.util").telescope.config_files()()', section = 'Config' },
-          { name = 'Quit', action = 'quit', section = 'Actions' },
-        },
-      }
-    end,
-  },
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
@@ -853,6 +818,7 @@ require('lazy').setup({
   require 'kickstart.plugins.nvim-ts-autotag',
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.lualine',
+  require 'kickstart.plugins.mini',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
