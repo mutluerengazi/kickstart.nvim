@@ -769,26 +769,39 @@ require('lazy').setup({
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
-  { -- Collection of various small independent plugins/modules
+  {
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [']quote
-      --  - ci'  - [C]hange [I]nside [']quote
+      -- Existing configurations
       require('mini.ai').setup { n_lines = 500 }
-
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
-
-      -- git
       require('mini.git').setup()
+
+      -- Add mini.starter configuration
+      require('mini.starter').setup {
+        evaluate_single = true,
+        header = table.concat({
+          [[                                                ]],
+          [[ ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗ ]],
+          [[ ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║ ]],
+          [[ ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║ ]],
+          [[ ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║ ]],
+          [[ ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║ ]],
+          [[ ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝ ]],
+          [[                                                ]],
+        }, '\n'),
+        footer = table.concat({
+          '',
+          '[ TIP: To exit Vim, just power off your computer. ]',
+        }, '\n'),
+        items = {
+          { name = 'Find File', action = 'Telescope find_files', section = 'Telescope' },
+          { name = 'Find Word', action = 'Telescope live_grep', section = 'Telescope' },
+          { name = 'Recent Files', action = 'Telescope oldfiles', section = 'Telescope' },
+          { name = 'Config', action = 'lua require("lazyvim.util").telescope.config_files()()', section = 'Config' },
+          { name = 'Quit', action = 'quit', section = 'Actions' },
+        },
+      }
     end,
   },
   { -- Highlight, edit, and navigate code
