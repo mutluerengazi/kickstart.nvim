@@ -1,4 +1,5 @@
 vim.cmd 'language en_US'
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -48,7 +49,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 100
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -202,39 +203,60 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {
     'folke/which-key.nvim',
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
-    config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
+    event = 'VeryLazy',
+    opts = {
+      preset = 'classic',
+      plugins = {
+        marks = true,
+        registers = true,
+        spelling = {
+          enabled = true,
+          suggestions = 20,
+        },
+      },
+      window = {
+        border = 'single',
+        position = 'bottom',
+      },
+    },
+    config = function(_, opts)
+      local wk = require 'which-key'
+      wk.setup(opts)
 
-      -- Document existing key chains
-      require('which-key').register {
-        ['<leader>n'] = { name = 'NeoTree', _ = 'which_key_ignore' },
-        ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-        ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-        ['<leader>b'] = {
-          name = '[B]uffer',
-          n = { ':bnext<CR>', 'Next buffer' },
-          p = { ':bprevious<CR>', 'Previous buffer' },
-          ['['] = { ':bfirst<CR>', 'First buffer' },
-          [']'] = { ':blast<CR>', 'Last buffer' },
-          d = { ':bdelete<CR>', 'Delete buffer' },
-          f = { ':bfirst<CR>', 'First buffer' },
-          l = { ':blast<CR>', 'Last buffer' },
-          _ = 'which_key_ignore',
+      wk.add {
+        { '<leader>n', group = 'NeoTree' },
+        { '<leader>c', group = '[C]ode' },
+        { '<leader>d', group = '[D]ocument' },
+        { '<leader>r', group = '[R]ename' },
+        { '<leader>s', group = '[S]earch' },
+        { '<leader>w', group = '[W]orkspace' },
+        { '<leader>t', group = '[T]oggle' },
+        { '<leader>h', group = 'Git [H]unk' },
+        { '<leader>b', group = '[B]uffer' },
+        { '<leader>bn', ':bnext<CR>', desc = 'Next buffer' },
+        { '<leader>bp', ':bprevious<CR>', desc = 'Previous buffer' },
+        { '<leader>b[', ':bfirst<CR>', desc = 'First buffer' },
+        { '<leader>b]', ':blast<CR>', desc = 'Last buffer' },
+        { '<leader>bd', ':bdelete<CR>', desc = 'Delete buffer' },
+        { '<leader>bf', ':bfirst<CR>', desc = 'First buffer' },
+        { '<leader>bl', ':blast<CR>', desc = 'Last buffer' },
+        {
+          mode = 'v',
+          { '<leader>h', group = 'Git [H]unk' },
         },
       }
-      -- visual mode
-      require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
-      }, { mode = 'v' })
     end,
+    keys = {
+      {
+        '<leader>?',
+        function()
+          require('which-key').show { global = false }
+        end,
+        desc = 'Buffer Local Keymaps (which-key)',
+      },
+    },
   },
 
   -- NOTE: Plugins can specify dependencies.
@@ -506,10 +528,10 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -765,7 +787,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'rust' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
@@ -819,9 +841,8 @@ require('lazy').setup({
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
   { import = 'custom.plugins' },
 }, {
+  -- Configuration options for lazy.nvim go here
   ui = {
-    -- If you are using a Nerd Font: set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
     icons = vim.g.have_nerd_font and {} or {
       cmd = '⌘',
       config = '🛠',
