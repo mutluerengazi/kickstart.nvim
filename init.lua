@@ -1,5 +1,4 @@
 vim.cmd 'language en_US'
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -770,16 +769,17 @@ require('lazy').setup({
   },
   -- colorscheme
   {
-    'sainnhe/gruvbox-material',
+    'navarasu/onedark.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme 'gruvbox-material'
+      require('onedark').setup {
+        style = 'dark',
+      }
+      require('onedark').load()
     end,
   },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
