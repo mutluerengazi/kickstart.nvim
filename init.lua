@@ -645,7 +645,7 @@ require('lazy').setup({
 
           -- Define your custom snippets
           ls.add_snippets('javascript', {
-            s('rfc', {
+            s('rs-first', {
               t {
                 'export default function Index() {',
                 '  return (',
@@ -657,7 +657,7 @@ require('lazy').setup({
           })
 
           ls.add_snippets('javascriptreact', {
-            s('rfc', {
+            s('rs-first', {
               t {
                 'export default function Index() {',
                 '  return (',
@@ -766,12 +766,14 @@ require('lazy').setup({
   },
   -- colorscheme
   {
-    'rose-pine/neovim',
-    priority = 1000, -- Make sure to load this before all the other start plugins.
-    init = function()
-      vim.cmd.colorscheme 'rose-pine'
-      -- You can configure highlights by doing something like:
-      vim.cmd.hi 'Comment gui=none'
+    'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 
