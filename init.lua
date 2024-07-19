@@ -767,19 +767,6 @@ require('lazy').setup({
       }
     end,
   },
-  -- colorscheme
-  {
-    'sainnhe/everforest',
-    lazy = false,
-    priority = 1000,
-
-    config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.everforest_enable_italic = true
-      vim.cmd.colorscheme 'everforest'
-    end,
-  },
 
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
@@ -834,6 +821,7 @@ require('lazy').setup({
   require 'kickstart.plugins.neo-tree',
   require 'kickstart.plugins.lualine',
   require 'kickstart.plugins.mini',
+  require 'kickstart.plugins.colorscheme',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
