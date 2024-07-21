@@ -1,23 +1,13 @@
 return {
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    'sainnhe/gruvbox-material',
+    lazy = false,
     priority = 1000,
-    opts = {
-      flavour = 'macchiato',
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        telescope = true,
-        notify = false,
-        mini = true,
-      },
-      -- Add any other options you want here
-    },
-    config = function(_, opts)
-      require('catppuccin').setup(opts)
-      vim.cmd.colorscheme 'catppuccin'
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = true
+      vim.cmd.colorscheme 'gruvbox-material'
     end,
   },
 }
