@@ -1,13 +1,10 @@
 return {
   {
-    'sainnhe/gruvbox-material',
-    lazy = false,
+    'ellisonleao/gruvbox.nvim',
     priority = 1000,
     config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.g.gruvbox_material_enable_italic = true
-      vim.cmd.colorscheme 'gruvbox-material'
+      vim.o.background = 'dark' -- or "light" for light version
+      vim.cmd [[colorscheme gruvbox]]
     end,
   },
 }
