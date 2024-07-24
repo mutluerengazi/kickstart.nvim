@@ -502,11 +502,12 @@ require('lazy').setup({
           -- code, if the language server you are using supports them
           --
           -- This may be unwanted, since they displace some of your code
-          if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
-          end
+          -- if client and client.server_capabilities.inlayHintProvider then
+          --   map('<leader>th', function()
+          --     local bufnr = vim.api.nvim_get_current_buf()
+          --     vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+          --   end, '[T]oggle Inlay [H]ints')
+          -- end
         end,
       })
 
@@ -644,7 +645,7 @@ require('lazy').setup({
           local ls = require 'luasnip'
           local s = ls.snippet
           local t = ls.text_node
-          local i = ls.insert_node
+          --local i = ls.insert_node
 
           -- Define your custom snippets
           ls.add_snippets('javascript', {
