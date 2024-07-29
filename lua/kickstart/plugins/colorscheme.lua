@@ -1,10 +1,11 @@
 return {
   {
-    'ellisonleao/gruvbox.nvim',
+    'sainnhe/everforest',
+    lazy = false,
     priority = 1000,
     config = function()
-      vim.o.background = 'dark' -- or "light" for light version
-      vim.cmd [[colorscheme gruvbox]]
+      vim.g.everforest_enable_italic = false
+      vim.cmd.colorscheme 'everforest'
     end,
   },
 }
