@@ -1,5 +1,15 @@
 return {
   {
+    'tpope/vim-fugitive',
+    keys = {
+      { '<leader>gs', ':Git<CR>', desc = 'Git status' },
+      { '<leader>gc', ':Git commit<CR>', desc = 'Git commit' },
+      { '<leader>gp', ':Git push<CR>', desc = 'Git push' },
+      { '<leader>gl', ':Git pull<CR>', desc = 'Git pull' },
+      { '<leader>gb', ':Git blame<CR>', desc = 'Git blame' },
+    },
+  },
+  {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
@@ -10,7 +20,7 @@ return {
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        local gitsigns = require 'gitsigns'
+        local gs = package.loaded.gitsigns
 
         local function map(mode, l, r, opts)
           opts = opts or {}
@@ -21,54 +31,51 @@ return {
         -- Navigation
         map('n', ']c', function()
           if vim.wo.diff then
-            vim.cmd.normal { ']c', bang = true }
-          else
-            gitsigns.next_hunk()
+            return ']c'
           end
-        end, { desc = 'Next hunk' })
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
+          return '<Ignore>'
+        end, { expr = true, desc = 'Next hunk' })
+
         map('n', '[c', function()
           if vim.wo.diff then
-            vim.cmd.normal { '[c', bang = true }
-          else
-            gitsigns.prev_hunk()
+            return '[c'
           end
-        end, { desc = 'Previous hunk' })
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
+          return '<Ignore>'
+        end, { expr = true, desc = 'Previous hunk' })
 
         -- Actions
-        map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
-        map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'Reset hunk' })
+        map('n', '<leader>hs', gs.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>hr', gs.reset_hunk, { desc = 'Reset hunk' })
         map('v', '<leader>hs', function()
-          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+          gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Stage hunk' })
         map('v', '<leader>hr', function()
-          gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
+          gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Reset hunk' })
-        map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'Stage buffer' })
-        map('n', '<leader>hu', gitsigns.undo_stage_hunk, { desc = 'Undo stage hunk' })
-        map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'Reset buffer' })
-        map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'Preview hunk' })
+        map('n', '<leader>hS', gs.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('n', '<leader>hR', gs.reset_buffer, { desc = 'Reset buffer' })
+        map('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview hunk' })
         map('n', '<leader>hb', function()
-          gitsigns.blame_line { full = true }
+          gs.blame_line { full = true }
         end, { desc = 'Blame line' })
-        map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = 'Toggle line blame' })
-        map('n', '<leader>hd', gitsigns.diffthis, { desc = 'Diff this' })
+        map('n', '<leader>tb', gs.toggle_current_line_blame, { desc = 'Toggle line blame' })
+        map('n', '<leader>hd', gs.diffthis, { desc = 'Diff this' })
         map('n', '<leader>hD', function()
-          gitsigns.diffthis '~'
+          gs.diffthis '~'
         end, { desc = 'Diff this ~' })
-        map('n', '<leader>td', gitsigns.toggle_deleted, { desc = 'Toggle deleted' })
+        map('n', '<leader>td', gs.toggle_deleted, { desc = 'Toggle deleted' })
 
         -- Text object
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'Select hunk' })
 
-        -- Full file blame (custom addition)
-        local function full_blame()
-          local file = vim.fn.expand '%:p'
-          vim.cmd('vnew | read !git blame ' .. vim.fn.shellescape(file))
-          vim.cmd 'setlocal buftype=nofile bufhidden=wipe nobuflisted nomodifiable'
-          vim.cmd 'setlocal nonumber'
-          vim.cmd 'setlocal filetype=git'
-        end
-        map('n', '<leader>hB', full_blame, { desc = 'Full file blame' })
+        -- Which Key definitions
       end,
     },
   },
