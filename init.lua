@@ -120,7 +120,6 @@ vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer' }
 vim.keymap.set('n', '<leader>b[', ':bfirst<CR>', { desc = 'First buffer' })
 vim.keymap.set('n', '<leader>b]', ':blast<CR>', { desc = 'Last buffer' })
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = 'Delete buffer' }) -- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
@@ -189,7 +188,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VeryLazy',
     opts = {
-      preset = 'modern',
+      preset = 'helix',
       plugins = {
         marks = true,
         registers = true,
@@ -213,6 +212,7 @@ require('lazy').setup({
         { '<leader>t', group = '[T]oggle' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { '<leader>b', group = '[B]uffer' },
+        { '<leader>g', group = '[G]it' },
         { '<leader>bn', ':bnext<CR>', desc = 'Next buffer' },
         { '<leader>bp', ':bprevious<CR>', desc = 'Previous buffer' },
         { '<leader>b[', ':bfirst<CR>', desc = 'First buffer' },
@@ -803,7 +803,7 @@ require('lazy').setup({
   require 'kickstart.plugins.lualine',
   require 'kickstart.plugins.mini',
   require 'kickstart.plugins.colorscheme',
-  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.gitstuff',
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
