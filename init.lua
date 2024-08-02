@@ -185,7 +185,7 @@ require('lazy').setup({
     'folke/which-key.nvim',
     event = 'VeryLazy',
     opts = {
-      preset = 'helix',
+      preset = 'modern',
       plugins = {
         marks = true,
         registers = true,
