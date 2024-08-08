@@ -577,11 +577,11 @@ require('lazy').setup({
       notify_on_error = false,
       formatters_by_ft = {
         lua = { 'stylua' },
-        javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        css = { { 'prettierd', 'prettier' } },
+        javascript = { 'prettierd', 'prettier' },
+        typescript = { 'prettierd', 'prettier' },
+        javascriptreact = { 'prettierd', 'prettier' },
+        typescriptreact = { 'prettierd', 'prettier' },
+        css = { 'prettierd', 'prettier' },
       },
       formatters = {
         prettierd = {
@@ -600,6 +600,7 @@ require('lazy').setup({
         return {
           timeout_ms = 500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          stop_after_first = true,
         }
       end,
     },
