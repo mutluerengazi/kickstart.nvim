@@ -1,11 +1,34 @@
 return {
   {
-    'sainnhe/gruvbox-material',
+    'ellisonleao/gruvbox.nvim',
     lazy = false,
     priority = 1000,
     config = function()
-      vim.g.gruvbox_material_enable_italic = false
-      vim.cmd.colorscheme 'gruvbox-material'
+      require('gruvbox').setup {
+        terminal_colors = true,
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = false,
+          operators = false,
+          folds = false,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true,
+        contrast = '',
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = false,
+      }
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 }
