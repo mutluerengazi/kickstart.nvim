@@ -576,24 +576,11 @@ require('lazy').setup({
     opts = {
       notify_on_error = false,
       formatters_by_ft = {
-        lua = { 'stylua' },
-        javascript = { 'prettierd', 'prettier' },
-        typescript = { 'prettierd', 'prettier' },
-        javascriptreact = { 'prettierd', 'prettier' },
-        typescriptreact = { 'prettierd', 'prettier' },
-        css = { 'prettierd', 'prettier' },
-      },
-      formatters = {
-        prettierd = {
-          env = {
-            PRETTIERD_DEFAULT_CONFIG = vim.fn.expand '~/.prettierrc',
-          },
-        },
-        prettier = {
-          env = {
-            PRETTIER_CONFIG_FILE = vim.fn.expand '~/.prettierrc',
-          },
-        },
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        css = { 'prettier' },
       },
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
