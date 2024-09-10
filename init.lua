@@ -200,23 +200,23 @@ require('lazy').setup({
       wk.setup(opts)
 
       wk.add {
-        { '<leader>n', group = 'NeoTree' },
-        { '<leader>c', group = '[C]ode' },
-        { '<leader>d', group = '[D]ocument' },
-        { '<leader>r', group = '[R]ename' },
-        { '<leader>s', group = '[S]earch' },
-        { '<leader>w', group = '[W]orkspace' },
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
-        { '<leader>b', group = '[B]uffer' },
-        { '<leader>g', group = '[G]it' },
-        { '<leader>bn', ':bnext<CR>', desc = 'Next buffer' },
-        { '<leader>bp', ':bprevious<CR>', desc = 'Previous buffer' },
-        { '<leader>b[', ':bfirst<CR>', desc = 'First buffer' },
-        { '<leader>b]', ':blast<CR>', desc = 'Last buffer' },
-        { '<leader>bd', ':bdelete<CR>', desc = 'Delete buffer' },
-        { '<leader>bf', ':bfirst<CR>', desc = 'First buffer' },
-        { '<leader>bl', ':blast<CR>', desc = 'Last buffer' },
+        { '<leader>n',  group = 'NeoTree' },
+        { '<leader>c',  group = '[C]ode' },
+        { '<leader>d',  group = '[D]ocument' },
+        { '<leader>r',  group = '[R]ename' },
+        { '<leader>s',  group = '[S]earch' },
+        { '<leader>w',  group = '[W]orkspace' },
+        { '<leader>t',  group = '[T]oggle' },
+        { '<leader>h',  group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>b',  group = '[B]uffer' },
+        { '<leader>g',  group = '[G]it' },
+        { '<leader>bn', ':bnext<CR>',         desc = 'Next buffer' },
+        { '<leader>bp', ':bprevious<CR>',     desc = 'Previous buffer' },
+        { '<leader>b[', ':bfirst<CR>',        desc = 'First buffer' },
+        { '<leader>b]', ':blast<CR>',         desc = 'Last buffer' },
+        { '<leader>bd', ':bdelete<CR>',       desc = 'Delete buffer' },
+        { '<leader>bf', ':bfirst<CR>',        desc = 'First buffer' },
+        { '<leader>bl', ':blast<CR>',         desc = 'Last buffer' },
       }
     end,
     keys = {
@@ -259,7 +259,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -352,11 +352,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/lazydev.nvim', ft = 'lua', opts = {} },
+      { 'folke/lazydev.nvim',      ft = 'lua',   opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -509,7 +509,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        tsserver = {},
+        ["typescript-language-server"] = {},
         --
 
         lua_ls = {
