@@ -798,12 +798,13 @@ require('lazy').setup({
   require 'kickstart.plugins.colorscheme',
   require 'kickstart.plugins.gitstuff',
   require 'kickstart.plugins.copilot',
+  require 'kickstart.plugins.copilotchat',
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-  { import = 'custom.plugins' },
+      { import = 'custom.plugins' },
 }, {
   -- Configuration options for lazy.nvim go here
   ui = {
