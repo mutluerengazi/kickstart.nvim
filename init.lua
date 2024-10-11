@@ -200,7 +200,8 @@ require('lazy').setup({
       wk.setup(opts)
 
       wk.add {
-        { '<leader>n',  group = 'NeoTree' },
+        { '<leader>n',  group = '[N]eoTree' },
+        { '<leader>a',  group = '[A]I' },
         { '<leader>c',  group = '[C]ode' },
         { '<leader>d',  group = '[D]ocument' },
         { '<leader>r',  group = '[R]ename' },
@@ -804,7 +805,7 @@ require('lazy').setup({
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --    For additional information, see `:help lazy.nvim-lazy.nvim-structuring-your-plugins`
-      { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
 }, {
   -- Configuration options for lazy.nvim go here
   ui = {
