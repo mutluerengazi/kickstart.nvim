@@ -798,8 +798,8 @@ require('lazy').setup({
   require 'kickstart.plugins.mini',
   require 'kickstart.plugins.colorscheme',
   require 'kickstart.plugins.gitstuff',
-  require 'kickstart.plugins.copilot',
-  require 'kickstart.plugins.copilotchat',
+  -- require 'kickstart.plugins.copilot',
+  -- require 'kickstart.plugins.copilotchat',
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
