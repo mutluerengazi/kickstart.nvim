@@ -640,6 +640,30 @@ require('lazy').setup({
               },
             }),
           })
+
+          ls.add_snippets('typescript', {
+            s('rs-first', {
+              t {
+                'export default function Index() {',
+                '  return (',
+                '    <div>Index</div>',
+                '  );',
+                '}',
+              },
+            }),
+          })
+
+          ls.add_snippets('typescriptreact', {
+            s('rs-first', {
+              t {
+                'export default function Index() {',
+                '  return (',
+                '    <div>Index</div>',
+                '  );',
+                '}',
+              },
+            }),
+          })
           -- If using `friendly-snippets`, uncomment the following lines
           -- require('luasnip.loaders.from_vscode').lazy_load()
         end,
@@ -798,8 +822,7 @@ require('lazy').setup({
   require 'kickstart.plugins.mini',
   require 'kickstart.plugins.colorscheme',
   require 'kickstart.plugins.gitstuff',
-  -- require 'kickstart.plugins.copilot',
-  -- require 'kickstart.plugins.copilotchat',
+  require 'kickstart.plugins.copilotchat', --also has copilot
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.
   --
