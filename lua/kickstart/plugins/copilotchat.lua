@@ -7,8 +7,14 @@ return {
       { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
     },
     build = "make tiktoken",       -- Only on MacOS or Linux
+    init = function()
+      local home = os.getenv("HOME")
+      package.path = package.path ..
+      ";" .. home .. "/.luarocks/share/lua/5.1/?.lua;" .. home .. "/.luarocks/share/lua/5.1/?/init.lua"
+      package.cpath = package.cpath .. ";" .. home .. "/.luarocks/lib/lua/5.1/?.so"
+    end,
     opts = {
-      debug = true,                -- Enable debugging
+      debug = true, -- Enable debugging
       model = "claude-3.5-sonnet"
       -- See Configuration section for rest
     },
