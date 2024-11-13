@@ -1,8 +1,9 @@
 return {
-  "rose-pine/neovim",
+  "ellisonleao/gruvbox.nvim",
+  priority = 1000, -- Ensure it loads first
   lazy = false,
-  priority = 1000,
   config = function()
-    vim.cmd.colorscheme('rose-pine')
+    vim.cmd.colorscheme('gruvbox')
+    vim.o.background = 'light'
   end
 }
