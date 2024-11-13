@@ -4,6 +4,6 @@ return {
   lazy = false,
   config = function()
     vim.cmd.colorscheme('gruvbox')
-    vim.o.background = 'light'
+    vim.o.background = 'dark'
   end
 }
