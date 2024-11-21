@@ -1,8 +1,8 @@
 return {
-  "dracula/vim",
+  "folke/tokyonight.nvim",
   priority = 1000, -- Ensure it loads first
   lazy = false,
   config = function()
-    vim.cmd.colorscheme('dracula')
+    vim.cmd.colorscheme('tokyonight-night')
   end
 }
