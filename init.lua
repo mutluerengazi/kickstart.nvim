@@ -117,7 +117,7 @@ vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer' }
 vim.keymap.set('n', '<leader>b[', ':bfirst<CR>', { desc = 'First buffer' })
 vim.keymap.set('n', '<leader>b]', ':blast<CR>', { desc = 'Last buffer' })
 vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = 'Delete buffer' }) -- [[ Basic Autocommands ]]
-
+vim.keymap.set('n', '<leader>bD', ':%bd<CR>', { desc = 'Delete all buffers' })
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
