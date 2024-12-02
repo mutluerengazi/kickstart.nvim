@@ -25,7 +25,7 @@ return {
         hide_gitignored = false, -- Optional: This line shows gitignored files
       },
       window = {
-        position = 'left',
+        position = "float", -- Change from 'left' to 'float'
         mappings = {
           ['\\'] = 'close_window',
           ['C'] = 'close_all_nodes',
