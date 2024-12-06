@@ -8,6 +8,7 @@ return {
     },
     build = "make tiktoken",       -- Only on MacOS or Linux
     init = function()
+      vim.g.copilot_enabled = false
       local home = os.getenv("HOME")
       package.path = package.path ..
           ";" .. home .. "/.luarocks/share/lua/5.1/?.lua;" .. home .. "/.luarocks/share/lua/5.1/?/init.lua"
