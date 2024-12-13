@@ -70,7 +70,7 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
 
 -- below configures the cursor shape
--- vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
