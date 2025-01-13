@@ -2,11 +2,11 @@ return {
   {
     'tpope/vim-fugitive',
     keys = {
-      { '<leader>gs', ':Git<CR>', desc = 'Git status' },
+      { '<leader>gs', ':Git<CR>',        desc = 'Git status' },
       { '<leader>gc', ':Git commit<CR>', desc = 'Git commit' },
-      { '<leader>gp', ':Git push<CR>', desc = 'Git push' },
-      { '<leader>gl', ':Git pull<CR>', desc = 'Git pull' },
-      { '<leader>gb', ':Git blame<CR>', desc = 'Git blame' },
+      { '<leader>gp', ':Git push<CR>',   desc = 'Git push' },
+      { '<leader>gl', ':Git pull<CR>',   desc = 'Git pull' },
+      { '<leader>gb', ':Git blame<CR>',  desc = 'Git blame' },
     },
   },
   {

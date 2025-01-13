@@ -1,8 +1,8 @@
 return {
-  'sainnhe/gruvbox-material',
-  lazy = false,
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("gruvbox-material")
+    vim.cmd.colorscheme("catppuccin-mocha")
   end
 }
